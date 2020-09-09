@@ -158,13 +158,13 @@ export default class PathfindingVisualizer extends Component {
 
 	toggleStart() {
 		const { set_start } = this.state;
-		this.setState({ set_start: !set_start, set_end: false, is_wall: false });
+		this.setState({ set_start: !set_start, set_end: false, isWall: false });
 	}
 
 	toggleEnd() {
 		const { set_end } = this.state;
 		this.setState(
-			{ set_start: false, set_end: !set_end, is_wall: false },
+			{ set_start: false, set_end: !set_end, isWall: false },
 			() => this.forceUpdate()
 		);
 	}
