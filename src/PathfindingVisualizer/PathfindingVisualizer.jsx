@@ -131,9 +131,11 @@ export default class PathfindingVisualizer extends Component {
 		if (!inAnimation) {
 			if (set_start) {
 				const newGrid = setStartNode(this.state.grid, row, col);
+				newGrid[row][col].isWall = false;
 				this.setState({ grid: newGrid, start_row: row, start_col: col });
 			} else if (set_end) {
 				const newGrid = setEndNode(this.state.grid, row, col);
+				newGrid[row][col].isWall = false;
 				this.setState({ grid: newGrid, fin_row: row, fin_col: col });
 			} else {
 				const newGrid = getNewGridWithWallToggled(
@@ -158,15 +160,12 @@ export default class PathfindingVisualizer extends Component {
 
 	toggleStart() {
 		const { set_start } = this.state;
-		this.setState({ set_start: !set_start, set_end: false, isWall: false });
+		this.setState({ set_start: !set_start, set_end: false });
 	}
 
 	toggleEnd() {
 		const { set_end } = this.state;
-		this.setState(
-			{ set_start: false, set_end: !set_end, isWall: false },
-			() => this.forceUpdate()
-		);
+		this.setState({ set_start: false, set_end: !set_end });
 	}
 
 	clearBoard() {
