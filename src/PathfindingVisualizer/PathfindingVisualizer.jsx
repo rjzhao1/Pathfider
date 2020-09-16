@@ -34,8 +34,8 @@ export default class PathfindingVisualizer extends Component {
 			if (i === visitedNodesInOrder.length) {
 				setTimeout(() => {
 					this.animatePath(nodesInShortestPathOrder);
+					this.setState({ inAnimation: false });
 				}, 20 * i);
-				this.setState({ inAnimation: false });
 				return;
 			}
 
@@ -45,6 +45,7 @@ export default class PathfindingVisualizer extends Component {
 					'node node-visited';
 			}, 20 * i);
 		}
+		this.setState({ inAnimation: false });
 	}
 
 	animatePath(nodesInShortestPathOrder) {
@@ -219,45 +220,63 @@ export default class PathfindingVisualizer extends Component {
 					<h1 className="navbar-logo">
 						PathFinder <i className="fas fa-road"></i>
 					</h1>
+					<button
+						className="nav-button"
+						onClick={() => this.toggleStart()}
+						disabled={this.state.inAnimation ? 'disabled' : ''}
+					>
+						Set Start Point
+					</button>
+					<button
+						className="nav-button"
+						onClick={() => this.toggleEnd()}
+						disabled={this.state.inAnimation ? 'disabled' : ''}
+					>
+						Set End Point
+					</button>
+
+					<button
+						className="nav-button"
+						onClick={() => this.toggleOff()}
+						disabled={this.state.inAnimation ? 'disabled' : ''}
+					>
+						Set Wall
+					</button>
+					<button
+						className="nav-button"
+						onClick={() => this.clearBoard()}
+						disabled={this.state.inAnimation ? 'disabled' : ''}
+					>
+						Clear
+					</button>
 
 					<button
 						className="nav-button"
 						onClick={() => this.visualizeDijkstra()}
+						disabled={this.state.inAnimation ? 'disabled' : ''}
 					>
 						Visualize Dijkstra
 					</button>
 					<button
 						className="nav-button"
 						onClick={() => this.visualizeDFS()}
+						disabled={this.state.inAnimation ? 'disabled' : ''}
 					>
 						Visualize Depth First Search
 					</button>
 					<button
 						className="nav-button"
 						onClick={() => this.visualizeBFS()}
+						disabled={this.state.inAnimation ? 'disabled' : ''}
 					>
 						Visualize Breath First Search
 					</button>
 					<button
 						className="nav-button"
 						onClick={() => this.visualizeAStar()}
+						disabled={this.state.inAnimation ? 'disabled' : ''}
 					>
 						Visualize A*
-					</button>
-					<button
-						className="nav-button"
-						onClick={() => this.toggleStart()}
-					>
-						Set Start Point
-					</button>
-					<button className="nav-button" onClick={() => this.toggleEnd()}>
-						Set End Point
-					</button>
-					<button className="nav-button" onClick={() => this.toggleOff()}>
-						Set Wall
-					</button>
-					<button className="nav-button" onClick={() => this.clearBoard()}>
-						Clear
 					</button>
 				</nav>
 
