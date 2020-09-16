@@ -32,17 +32,17 @@
 	}
 	25% {
 		transform: scale(0.3);
-		background-color: rgba(16, 89, 150, 0.75);
+		background-color: rgba(26, 224, 231, 0.75);
 		border-radius: 100%;
 	}
 
 	50% {
-		background-color: rgba(71, 224, 10, 0.75);
+		background-color: rgba(10, 67, 224, 0.75);
 	}
 
 	75% {
 		transform: scale(1.2);
-		background-color: rgba(60, 255, 0, 0.75);
+		background-color: rgba(195, 0, 255, 0.75);
 	}
 
 	100% {
